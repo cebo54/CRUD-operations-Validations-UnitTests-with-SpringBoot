@@ -1,6 +1,5 @@
 package com.example.backend.api;
 
-import com.example.backend.Business.UserManager;
 import com.example.backend.Business.UserService;
 import com.example.backend.dto.UserCreateDto;
 import com.example.backend.dto.UserUpdateDto;
@@ -26,7 +25,7 @@ public class UserAPI {
 
     @GetMapping("/getUser/{id}")
     public ResponseEntity<UserViewDto>getUserById(@PathVariable Long id){
-        final UserViewDto user = userService.geUserById(id);
+        final UserViewDto user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
     @GetMapping("/getAllUsers")

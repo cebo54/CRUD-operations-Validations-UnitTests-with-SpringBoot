@@ -15,23 +15,23 @@ public class BackendApplication {
 
 		SpringApplication.run(BackendApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner createInitialUsers(UserService userService){
-		return (args)-> {
-			UserCreateDto userCreateDto =new UserCreateDto();
-			userCreateDto.setUserName("user1");
-			userCreateDto.setFirstName("Cebrail");
-			userCreateDto.setLastName("Kaya");
-			userService.createUser(userCreateDto);
-
-			UserCreateDto user =new UserCreateDto();
-			user.setUserName("user2");
-			user.setFirstName("Ahsen");
-			user.setLastName("Kaya");
-			userService.createUser(user);
-
-
-		};
-	}
+//	@Bean
+//	CommandLineRunner createInitialUsers(UserService userService){
+//		return (args)-> {
+//			UserCreateDto userCreateDto =new UserCreateDto();
+//			userCreateDto.setUserName("user1");
+//			userCreateDto.setFirstName("Cebrail");
+//			userCreateDto.setLastName("Kaya");
+//			userService.createUser(userCreateDto);
+//
+//			UserCreateDto user =new UserCreateDto();
+//			user.setUserName("user2");
+//			user.setFirstName("Ahsen");
+//			user.setLastName("Kaya");
+//			userService.createUser(user);
+//
+//
+//		};
+//	}
 
 }

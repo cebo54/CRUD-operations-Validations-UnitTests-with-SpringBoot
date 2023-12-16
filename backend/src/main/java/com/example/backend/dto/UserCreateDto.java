@@ -1,12 +1,13 @@
 package com.example.backend.dto;
 
 import com.example.backend.validator.UniqueUserName;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+@Builder
 @Data
 public class UserCreateDto {
     @NotNull(message = "{backend.constraints.username.NotNull.message}")

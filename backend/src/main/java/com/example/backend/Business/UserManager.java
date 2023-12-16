@@ -30,7 +30,7 @@ public class UserManager implements UserService{
 
     @Override
     @Transactional(readOnly = true,propagation = Propagation.SUPPORTS)
-    public UserViewDto geUserById(Long id) {
+    public UserViewDto getUserById(Long id) {
         final User user=userDao.findById(id).
                 orElseThrow(()-> new NotFoundException("Not found Exception"));
 
