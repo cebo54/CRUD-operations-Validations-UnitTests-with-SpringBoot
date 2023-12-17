@@ -8,9 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,7 +62,6 @@ class UserManagerTest {
         verify(userDao,times(1)).findAll();
         assertEquals(result.size(),1);
 
-
     }
 
 
@@ -97,9 +101,21 @@ class UserManagerTest {
 
     @Test
     void deleteUser() {
+        User user = generateUser();
+        when(userDao.findById(anyLong())).thenReturn(Optional.of(user));
+        userService.deleteUser(anyLong());
+        verify(userDao,times(1)).findById(anyLong());
     }
 
     @Test
     void slice() {
+
+        int page = 0;
+        int size = 1;
+        Pageable paging = PageRequest.of(page, size);
+        Page<User> userList = new PageImpl<>(List.of(generateUser()));
+        when(userDao.findAll(any(Pageable.class))).thenReturn(userList);
+        var result = userService.slice(paging);
+        assertEquals(1,result.size());
     }
 }
